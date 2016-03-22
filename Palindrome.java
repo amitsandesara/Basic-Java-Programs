@@ -1,7 +1,7 @@
 
-public class Armstrong {
+public class Palindrome {
 	
-	public static boolean armstrongStack(String s){
+	public static boolean palindromeStack(String s){
 		Stack s1 = new Stack(s.length());
 		if(s.length()%2 == 0){
 			for(int j = 0; j< s.length()/2; j++)
@@ -27,7 +27,7 @@ public class Armstrong {
 	}
 	
 
-	private static boolean armstrongIteration(String s) {
+	private static boolean palindromeIteration(String s) {
 		for(int i = 0, j = s.length()-1; i < s.length()/2 ; i++, j--){
 			if(s.charAt(i) == s.charAt(j))
 				continue;
@@ -40,11 +40,11 @@ public class Armstrong {
 	public static void main(String args[]){
 		String s = "nayannayan";
 		
-		boolean arm = armstrongStack(s);
-		boolean Arm1 = armstrongIteration(s);
+		boolean arm = palindromeStack(s);
+		boolean Arm1 = palindromeIteration(s);
 		if(Arm1 && arm)
-			System.out.println(s +" is Armstrong");
+			System.out.println(s +" is palindrome");
 		else
-			System.out.println(s +" is not Armstrong");
+			System.out.println(s +" is not palindrome");
 	}
 }
