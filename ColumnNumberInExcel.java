@@ -1,30 +1,30 @@
 import java.util.*;
+
 public class ColumnNumberInExcel {
-	
+
 	int countAtoZ = 26;
 	static int columnIndex = 0;
 	static double temp;
+
 	private static void getColumnIndex(String columnName) {
-		// TODO Auto-generated method stub
 		int stringLength = columnName.length();
 		int count;
-		int  i;
-		for (i = 0, count=(stringLength-1); i<stringLength; i++, count--){
+		int i;
+		for (i = 0, count = (stringLength - 1); i < stringLength; i++, count--) {
 			temp = getAlphabetValue(columnName.charAt(i));
-			
-			if(count != 0)
-				temp *= (Math.pow(26,count));
+
+			if (count != 0)
+				temp *= (Math.pow(26, count));
 			columnIndex += temp;
-			
+
 		}
-		if(columnIndex <= 16384)
-			System.out.println("Column Index is: "+ (columnIndex));
+		if (columnIndex <= 16384)
+			System.out.println("Column Index is: " + (columnIndex));
 		else
 			System.out.println("Column does not exist in Microsoft Excel");
 	}
-	
+
 	private static int getAlphabetValue(char i) {
-		// TODO Auto-generated method stub
 		if (i == 'A')
 			return 1;
 		if (i == 'B')
@@ -81,15 +81,15 @@ public class ColumnNumberInExcel {
 			return -1;
 	}
 
-	@SuppressWarnings("resource")
-	public static void main(String args[]){
+	public static void main(String args[]) {
 		Scanner sc;
 		String columnName;
 		sc = new Scanner(System.in);
 		System.out.println("Enter Column name: ");
 		columnName = sc.nextLine();
 		columnName = columnName.toUpperCase();
-		System.out.println("Column name is: "+columnName);
+		sc.close();
+		System.out.println("Column name is: " + columnName);
 		getColumnIndex(columnName);
 	}
 }

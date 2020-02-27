@@ -4,19 +4,23 @@ public class Stack {
 	private int maxSize;
 	private char[] stackArray;
 	private int top;
-	
+
 	public Stack(int s) {
 		maxSize = s;
 		stackArray = new char[maxSize];
 		top = -1;
 	}
 
-	public void push(char j) {  
+	public void push(char j) {
 		stackArray[++top] = j;
 	}
 
-	public char pop() { 
+	public char pop() {
 		return stackArray[top--];
+	}
+
+	public long peek() {
+		return stackArray[top];
 	}
 
 	public boolean isEmpty() {
@@ -33,15 +37,14 @@ public class Stack {
 		String ip = sc.next();
 		sc.close();
 		Boolean flag = true;
-		Stack theStack = new Stack(ip.length()); 
-		for (int i = 0; i < ip.length(); i++){
+		Stack theStack = new Stack(ip.length());
+		for (int i = 0; i < ip.length(); i++) {
 			if (ip.charAt(i) == '(')
 				theStack.push('(');
-			else if (ip.charAt(i) == ')'){
-				if (!theStack.isEmpty()){
+			else if (ip.charAt(i) == ')') {
+				if (!theStack.isEmpty()) {
 					theStack.pop();
-				}
-				else{
+				} else {
 					flag = false;
 					break;
 				}
@@ -49,7 +52,7 @@ public class Stack {
 		}
 		if (flag == true && theStack.isEmpty())
 			System.out.println("Valid Paranthesis");
-		else{
+		else {
 			System.out.println("Not a valid paranthesis");
 		}
 	}

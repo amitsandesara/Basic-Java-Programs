@@ -1,68 +1,62 @@
 import java.util.*;
 
-class newStack{
+class newStack {
 	private int maxSize;
 	private char[] stackArray;
 	private int top;
-	
-	newStack(int s){
+
+	newStack(int s) {
 		maxSize = s;
 		stackArray = new char[maxSize];
-		top = -	1;
+		top = -1;
 	}
-	public void push(char s){
-//		System.out.println("Pushing : "+ s);
+
+	public void push(char s) {
 		stackArray[++top] = s;
 	}
-	public char pop(){
+
+	public char pop() {
 		char s = stackArray[top--];
-//		System.out.println("Poping : "+ s);
 		return s;
 	}
+
 	public char peek() {
-		if(top != -1){
-//		System.out.println("Peeking: " + stackArray[top]);
-		return stackArray[top];
-		}
-		else
+		if (top != -1) {
+			return stackArray[top];
+		} else
 			return 0;
 	}
 }
 
+
 public class Paranthesis {
-	public static void main(String args[]){
+	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter a string with paranthesis:- ");
 		String str = sc.nextLine();
 		int length = str.length();
-		
+
 		newStack myStack = new newStack(length);
 		boolean myFlag = true;
-		for (int i = 0; i < length; i++){
-			
-			if(str.charAt(i) == '(' || str.charAt(i) == '{' || str.charAt(i) == '['){
+		for (int i = 0; i < length; i++) {
+
+			if (str.charAt(i) == '(' || str.charAt(i) == '{' || str.charAt(i) == '[') {
 				myStack.push(str.charAt(i));
 				continue;
-			}
-			else if(str.charAt(i) == '}' && myStack.peek() == '{'){
+			} else if (str.charAt(i) == '}' && myStack.peek() == '{') {
 				myStack.pop();
-			}
-			else if(str.charAt(i) == ')' && myStack.peek() == '('){
+			} else if (str.charAt(i) == ')' && myStack.peek() == '(') {
 				myStack.pop();
-			}
-			else if(str.charAt(i) == ']' && myStack.peek() == '['){
+			} else if (str.charAt(i) == ']' && myStack.peek() == '[') {
 				myStack.pop();
-			}
-			else if(Character.isLetterOrDigit(str.charAt(i))){			
+			} else if (Character.isLetterOrDigit(str.charAt(i))) {
 				continue;
-			}
-			else
-			{
+			} else {
 				myFlag = false;
 			}
 		}
-		System.out.println( myFlag ? "Valid paranthesis" : "Not a valid paranthesis");
+		System.out.println(myFlag ? "Valid paranthesis" : "Not a valid paranthesis");
 		sc.close();
-		}
+	}
 }
 
